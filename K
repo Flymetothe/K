@@ -27,8 +27,10 @@ FOV_CIRCLE.Radius = _G.FOV
 FOV_CIRCLE.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
 
 Options = {
-	Torso = "Torso";
+	Torso = "HumanoidRootPart";
 	Head = "Head";
+	UpperTorso = "UpperTorso";
+	LowerTorso = "LowerTorso";
 }
 
 local function MoveFovCircle()
