@@ -31,6 +31,18 @@ Options = {
 	Head = "Head";
 	UpperTorso = "UpperTorso";
 	LowerTorso = "LowerTorso";
+	RightFoot = "RightFoot";
+	LeftFoot = "LeftFoot";
+	RightHand = "RightHand";
+	LeftHand = "LeftHand";
+	RightLowerLeg = "RightLowerLeg";
+	LeftLowerLeg = "LeftLowerLeg";
+	RightUpperLeg = "RightUpperLeg";
+	LeftUpperLeg = "LeftUpperLeg";
+	RightUpperArm = "RightUpperArm";
+	LeftUpperArm = "LeftUpperArm";
+	RightLowerArm = "RightLowerArm";
+	LeftLowerArm = "LeftLowerArm";
 }
 
 local function MoveFovCircle()
@@ -47,10 +59,10 @@ end coroutine.wrap(MoveFovCircle)()
 Mouse.KeyDown:Connect(function(KeyPressed)
 	if KeyPressed == (_G.AimKey:lower()) then
 		if SilentAim == false then
-			FOV_CIRCLE.Color = Color3.new(0, 1, 0)
+			FOV_CIRCLE.Color = Color3.new(0, 0, 0)
 			SilentAim = true
 		elseif SilentAim == true then
-			FOV_CIRCLE.Color = Color3.new(1, 0, 0)
+			FOV_CIRCLE.Color = Color3.new(0, 0, 0)
 			SilentAim = false
 		end
 	end
@@ -86,7 +98,7 @@ oldIndex = hookmetamethod(game, "__index", function(self, Index)
 		
 		if Targete ~= nil and Targete[Options.Torso] and Targete:FindFirstChild("Humanoid").Health > 0 then
 			if SilentAim then
-				local ShootThis = Targete[Options.Torso] -- or Options.Head
+				local ShootThis = Targete[Options.Head] -- or Options.Head
 				local Predicted_Position = ShootThis.CFrame + (ShootThis.Velocity * _G.Prediction + Vector3.new(0,-1,0)) --  (-1) = Less blatant
 				return ((Index == "Hit" and Predicted_Position))
 			end
